@@ -159,7 +159,7 @@ export default class PortfolioForm extends Component {
                 } else {
                     this.props.handleNewFormSubmission(response.data.portfolio_item)
                 }
-                this.props.handleNewFormSubmission(response.data.portfolio_item);
+                // this.props.handleNewFormSubmission(response.data.portfolio_item);
 
                 this.setState({
                     name: "",
