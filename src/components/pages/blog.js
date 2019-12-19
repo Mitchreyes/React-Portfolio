@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import BlogItem from "../blog/blog-item";
 import BlogModal from "../modals/blog-modal";
+import parse from 'html-react-parser';
 
 class Blog extends Component {
     constructor() {
@@ -29,7 +30,7 @@ class Blog extends Component {
         this.setState({
             blogModalIsOpen: false,
             blogItems: [blog].concat(this.state.blogItems)
-        });
+        })
     }
 
     handleModalClose() {
@@ -100,13 +101,13 @@ class Blog extends Component {
             modalIsOpen={this.state.blogModalIsOpen}
             />
 
-            {/* {this.props.loggedInStatus === "LOGGED_IN" ? ( */}
+            {this.props.loggedInStatus === "LOGGED_IN" ? 
             <div className="new-blog-link">
                 <a onClick={this.handleNewBlogClick}>
                     <FontAwesomeIcon icon="plus-circle" />
                 </a>
             </div>
-            {/* ) : null} */}
+            : null} 
                 <div className="content-container">
                     {blogRecords}
                 </div>
