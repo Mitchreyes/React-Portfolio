@@ -1,7 +1,7 @@
 .blog-form-wrapper {
     @include base-grid();
     grid-template-columns: 1fr;
-    padding: 42px;
+    padding: 30px;
 
     @include input-element();
     input {

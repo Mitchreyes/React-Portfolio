@@ -23,7 +23,7 @@ export default class BlogModal extends Component {
             }
         };
 
-        this.handleSuccessfulFormSubmission = this. handleSuccessfulFormSubmission.bind(this);
+        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this);
     }
 
     handleSuccessfulFormSubmission(blog) {

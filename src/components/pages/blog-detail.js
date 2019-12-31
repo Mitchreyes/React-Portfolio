@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 
 import BlogFeaturedImage from '../blog/blog-featured-image';
+import BlogForm from '../blog/blog-form';
 import { cpus } from 'os';
 
 export default class BlogDetail extends Component {
@@ -12,7 +13,24 @@ export default class BlogDetail extends Component {
         this.state = {
             currentId: this.props.match.params.slug,
             blogItem: {},
-        }
+            editMode: false
+        };
+
+        this.handlEditClick = this.handlEditClick.bind(this)
+        this.handleFeaturedImageDelete = this.handleFeaturedImageDelete.bind(this);
+    }
+    
+    handleFeaturedImageDelete() {
+        this.setState({
+            blogItem: {
+                featured_image_url: ""
+            }
+        })
+    }
+
+    handlEditClick() {
+        console.log("handle edit clicked");
+        this.setState({ editMode: true });
     }
 
     getBlogItem() {
@@ -38,14 +56,21 @@ export default class BlogDetail extends Component {
             blog_status
         } = this.state.blogItem;
 
-        console.log("currentId", this.state.currentId);
-        return (
-            <div className="blog-container">
-                <div className="content-container">
-                    <h1>{title}</h1>
+        const contentManager = () => {
+            if (this.state.editMode) {
+                return <BlogForm handleFeaturedImageDelete={this.handleFeaturedImageDelete} editMode={this.state.editMode} blog={this.state.blogItem} />
+            } else {
+                return (<div className="content-container">
+                    <h1 onClick={this.handlEditClick}>{title}</h1>
                     <BlogFeaturedImage img={featured_image_url} />
                     <div className="content">{ ReactHtmlParser(content) }</div>
                 </div>
+                );
+            }
+        }
+        return (
+            <div className="blog-container"> 
+                {contentManager()}
             </div>
         )
     }
