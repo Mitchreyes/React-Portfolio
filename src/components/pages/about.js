@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import profilePicture from '../../../static/assets/images/bio/cat-mitch.jpg';
+import profilePicture from '../../../static/assets/images/bio/catmitch.jpg';
 
 export default function() {
 	return (
